@@ -24,10 +24,17 @@ class RsaPrivateKey
      * @param string $passphrase
      * @throws InvalidKeyException
      */
-    public function __construct(string $filePath, $passphrase = '')
+    public function __construct(string $filePath, $passphrase = '', $contents = null)
     {
         try {
-            $this->resource = openssl_pkey_get_private(file_get_contents(realpath($filePath)), $passphrase);
+
+            $pcontents = null;
+            if($contents !== null) {
+                $pcontents = $contents;
+            } else {
+                $pcontents = file_get_contents(realpath($filePath));
+            }
+            $this->resource = openssl_pkey_get_private($pcontents, $passphrase);
 
             if (empty($this->resource)) {
                 throw new InvalidKeyException();

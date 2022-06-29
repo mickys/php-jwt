@@ -23,10 +23,17 @@ class RsaPublicKey
      * @param string $filePath
      * @throws InvalidKeyException
      */
-    public function __construct(string $filePath)
+    public function __construct(string $filePath, $contents = null)
     {
         try {
-            $this->resource = openssl_pkey_get_public(file_get_contents(realpath($filePath)));
+
+            $pcontents = null;
+            if($contents !== null) {
+                $pcontents = $contents;
+            } else {
+                $pcontents = file_get_contents(realpath($filePath));
+            }
+            $this->resource = openssl_pkey_get_public($pcontents);
 
             if (empty($this->resource)) {
                 throw new InvalidKeyException();
