@@ -1,5 +1,5 @@
 {
-  "name": "miladrahimi/php-jwt",
+  "name": "mickys/php-jwt",
   "description": "A PHP implementation of JWT (JSON Web Token) generator, parser, verifier, and validator",
   "keywords": [
     "JWT",
@@ -11,7 +11,7 @@
     "Verifier",
     "Validator"
   ],
-  "homepage": "https://github.com/miladrahimi/php-jwt",
+  "homepage": "https://github.com/mickys/php-jwt",
   "type": "library",
   "license": "MIT",
   "authors": [
